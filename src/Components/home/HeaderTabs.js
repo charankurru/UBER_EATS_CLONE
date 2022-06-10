@@ -4,7 +4,7 @@ import React from 'react'
 const HeaderTabs = () => {
     const [active, setActive] = React.useState("Delivery")
     return (
-        <View style={{ flexDirection: 'row', alignSelf: 'center', }}>
+        <View style={{ flexDirection: 'row', alignSelf: 'center', marginTop: 12 }}>
             <HeaderButton text="Delivery" active={active} setActive={setActive} />
             <HeaderButton text="Pickup" active={active} setActive={setActive} />
         </View>

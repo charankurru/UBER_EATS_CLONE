@@ -1,10 +1,11 @@
 import { StyleSheet, View } from 'react-native';
 import Home from './src/Screens/Home';
+import RestaurantDetails from './src/Screens/RestaurantDetails';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Home />
+      <RestaurantDetails />
     </View>
   );
 }
