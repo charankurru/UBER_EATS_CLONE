@@ -3,10 +3,10 @@ import React from 'react'
 import HeaderTabs from '../Components/home/HeaderTabs'
 import SearchBar from '../Components/home/SearchBar'
 import Categories from '../Components/home/Categories'
-import RestaurantItem from '../Components/home/RestaurantItem'
+import RestaurantItems from '../Components/home/RestaurantItems'
 import BottomTabs from '../Components/home/BottomTabs'
 
-const Home = () => {
+const Home = ({ navigation }) => {
     return (
         <SafeAreaView style={{ backgroundColor: '#eee', flex: 1 }}>
             <View style={{ backgroundColor: 'white', padding: 15 }}>
@@ -15,9 +15,7 @@ const Home = () => {
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Categories />
-                <RestaurantItem />
-                <RestaurantItem />
-                <RestaurantItem />
+                <RestaurantItems navigation={navigation} />
             </ScrollView>
             <BottomTabs />
         </SafeAreaView>
