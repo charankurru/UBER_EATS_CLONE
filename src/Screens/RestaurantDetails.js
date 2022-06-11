@@ -3,6 +3,7 @@ import React from 'react'
 import About from '../Components/restaurantDetails/About'
 import { Divider } from "@rneui/themed";
 import MenuItem from '../Components/restaurantDetails/MenuItem'
+import ViewCart from '../Components/restaurantDetails/ViewCart';
 
 const foods = [
     {
@@ -44,13 +45,14 @@ const foods = [
     },
 ];
 
-const RestaurantDetails = ({ route }) => {
+const RestaurantDetails = ({ route, navigation }) => {
     let restaurantDetailsData = route.params
     return (
         <View style={{ flex: 1 }}>
             <About restaurantData={restaurantDetailsData} />
             <Divider width={1} />
             <MenuItem foods={foods} />
+            <ViewCart navigation={navigation} />
         </View>
     )
 }
