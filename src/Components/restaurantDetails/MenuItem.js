@@ -2,9 +2,9 @@ import { View, Text, Image, StyleSheet, ScrollView } from 'react-native'
 import React from 'react'
 import { Divider } from "@rneui/themed";
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import { useDispatch } from "react-redux";
 
 //🔥 code for styles 
-
 const styles = StyleSheet.create({
     menuItem: {
         flexDirection: 'row',
@@ -35,14 +35,29 @@ const styles = StyleSheet.create({
     }
 })
 
-const MenuItem = ({ foods }) => {
+const MenuItem = ({ foods, restaurantName }) => {
+
+    const dispatch = useDispatch();
+
+    const selectItem = (foodItem, checkBoxValue) => {
+        dispatch({
+            type: 'ADD_ITEM',
+            payload: {
+                ...foodItem,
+                restaurantName: restaurantName,
+                checkBoxValue: checkBoxValue
+            }
+        })
+    }
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             {
                 foods.map((food, index) => (
                     <View key={index} >
                         <View style={styles.menuItem}>
-                            <BouncyCheckbox />
+                            <BouncyCheckbox
+                                onPress={(checkBoxValue) => selectItem(food, checkBoxValue)}
+                            />
                             <View style={styles.menuInfo} >
                                 <Text style={styles.dishTitle}>{food.title}</Text>
                                 <Text>{food.description}</Text>

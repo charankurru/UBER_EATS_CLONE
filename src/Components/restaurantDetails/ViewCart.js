@@ -1,5 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import React from 'react'
+import { useSelector } from "react-redux";
+
 
 const styles = StyleSheet.create({
     buttonPosition: {
@@ -35,11 +37,28 @@ const styles = StyleSheet.create({
 })
 
 const ViewCart = () => {
+    const cartItems = useSelector(
+        (state) => state.cartReducer.selectedItems.items
+    );
+    console.log(cartItems)
+    let totalPrice = 0
+    cartItems.forEach((item) => {
+        totalPrice += Number(item.price.split('$')[1])
+    })
     return (
         <View style={styles.buttonPosition}>
             <View style={styles.container}>
                 <TouchableOpacity style={styles.button} >
                     <Text style={styles.btnText}>View cart</Text>
+                    <Text style={{
+                        top: 15,
+                        right: 20,
+                        position: 'absolute',
+                        color: 'white',
+                        fontSize: 15
+                    }}>
+                        {totalPrice} $
+                    </Text>
                 </TouchableOpacity>
             </View>
         </View>

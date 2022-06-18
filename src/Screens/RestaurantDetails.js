@@ -51,7 +51,7 @@ const RestaurantDetails = ({ route, navigation }) => {
         <View style={{ flex: 1 }}>
             <About restaurantData={restaurantDetailsData} />
             <Divider width={1} />
-            <MenuItem foods={foods} />
+            <MenuItem foods={foods} restaurantName={restaurantDetailsData.name} />
             <ViewCart navigation={navigation} />
         </View>
     )
