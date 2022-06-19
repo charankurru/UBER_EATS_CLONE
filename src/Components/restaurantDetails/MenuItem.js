@@ -3,6 +3,7 @@ import React from 'react'
 import { Divider } from "@rneui/themed";
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 //🔥 code for styles 
 const styles = StyleSheet.create({
@@ -49,6 +50,15 @@ const MenuItem = ({ foods, restaurantName }) => {
             }
         })
     }
+
+    const cartItems = useSelector(
+        (state) => state.cartReducer.selectedItems.items
+    )
+
+    const isFoodInCart = (foodItem) => {
+        return Boolean(cartItems.find(item => item.title === foodItem.title))
+    }
+
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
             {
@@ -56,6 +66,7 @@ const MenuItem = ({ foods, restaurantName }) => {
                     <View key={index} >
                         <View style={styles.menuItem}>
                             <BouncyCheckbox
+                                isChecked={isFoodInCart(food)}
                                 onPress={(checkBoxValue) => selectItem(food, checkBoxValue)}
                             />
                             <View style={styles.menuInfo} >
